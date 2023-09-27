@@ -1,17 +1,37 @@
 #include <iostream>
 #include "TreasureHunt.h"
 
-std::string chosen_column;
-std::string chosen_row;
+std::string chosen_column = "0";
+std::string chosen_row = "0";
 std::string nb_treasures;
 
 int cells[WIDTH][HEIGHT];
 
 int max_tries;
 int nb_treasures_found = 0;
+int target_value;
 int tries = 0;
 
 bool restart;
+
+int treasure_near(int x, int y)
+{
+	int treasure_around = 0;
+	for (int row = y - 1; row < y + 2; row++)
+	{
+		for (int column = x - 1; column < x + 2; column++)
+		{
+			if(row >= 0 && row <= HEIGHT - 1 && column >= 0 && column <= WIDTH - 1)
+			{
+				if (cells[row][column] == TREASURE)
+				{
+					treasure_around++;
+				}
+			}
+		}
+	}
+	return treasure_around;
+}
 
 bool hit_miss() //compares the value of the tile hit by the player with the Cell_type enum to determine what happens to said value
 {
@@ -87,6 +107,7 @@ bool valid_number(const std::string& input_string, const int min, const int max)
 	return false;
 }
 
+
 void draw_playfield() //function that gives the player information and draws the board
 {
 	std::cout << "Remaining tries: " << max_tries - tries << "/" << max_tries << "\t\t Chests found: " << nb_treasures_found << "/" << nb_treasures << std::endl << std::endl;
@@ -100,7 +121,7 @@ void draw_playfield() //function that gives the player information and draws the
 				std::cout << "-\t";
 				break;
 			case DUG:
-				std::cout << "o\t";
+				std::cout << treasure_near(column, row) << "\t";
 				break;
 			case TREASURE:
 				//std::cout << "!\t"; //uncomment this line and comment the next one to have the chests be visible from the start

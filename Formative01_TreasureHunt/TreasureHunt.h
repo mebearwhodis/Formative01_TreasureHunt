@@ -21,14 +21,18 @@ extern int cells[WIDTH][HEIGHT];
 
 extern int max_tries;
 extern int nb_treasures_found;
+extern int target_value;
 extern int tries;
 
 extern bool restart;
+
+int treasure_near(int x, int y);
 
 bool hit_miss();
 bool play_again();
 bool valid_number();
 
+void get_value();
 void place_treasures();
 void draw_playfield();
 void ask_player();
