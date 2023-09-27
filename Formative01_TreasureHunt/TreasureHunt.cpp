@@ -103,8 +103,8 @@ void draw_playfield() //function that gives the player information and draws the
 				std::cout << "o\t";
 				break;
 			case TREASURE:
-				std::cout << "!\t"; //uncomment this line and comment the next one to have the chests be visible from the start
-				//std::cout << "-\t";
+				//std::cout << "!\t"; //uncomment this line and comment the next one to have the chests be visible from the start
+				std::cout << "-\t";
 				break;
 			case FOUND:
 				std::cout << "X\t";
