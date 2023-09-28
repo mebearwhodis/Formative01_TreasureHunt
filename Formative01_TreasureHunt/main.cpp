@@ -13,19 +13,19 @@ int main()
 {
 	do { //base game loop, used to ask the player if they want to play another round
 		srand(time(nullptr)); //gets a random seed
-		reset_game(); //resets the variables and arrays
-		place_treasures(); //asks the player how many chests they want and places them randomly on the board, also calculates the max number of tries allowed
-		draw_playfield(); //draws the board
+		ResetGame(); //resets the variables and arrays
+		PlaceTreasures(); //asks the player how many chests they want and places them randomly on the board, also calculates the max number of tries allowed
+		DrawPlayfield(); //draws the board
 
-		bool all_treasures; //used by the following do...while to determine if there are still hidden chests on the board
+		bool allTreasures; //used by the following do...while to determine if there are still hidden chests on the board
 
 		do //base gameplay loop once the board is initialised
 		{
-			ask_player(); //asks the player what tile they want to dig at
-			all_treasures = hit_miss(); //all_treasures is true only if all the treasure chests are found
-			draw_playfield();
-		} while (all_treasures == false && tries < max_tries); //as long as there are treasures chests and tries remaining, the game continues
-		if (all_treasures == true) //if all the treasures are found before the player runs out of tries, they win
+			AskPlayer(); //asks the player what tile they want to dig at
+			allTreasures = HitMiss(); //all_treasures is true only if all the treasure chests are found
+			DrawPlayfield();
+		} while (allTreasures == false && tries < maxTries); //as long as there are treasures chests and tries remaining, the game continues
+		if (allTreasures == true) //if all the treasures are found before the player runs out of tries, they win
 		{
 			std::cout << "Good job, you won!" << std::endl << std::endl;
 		}
@@ -33,5 +33,5 @@ int main()
 		{
 			std::cout << "Aww shucks, you ran out of tries! Better luck next time... :(" << std::endl << std::endl;
 		}
-	} while (play_again());
+	} while (PlayAgain());
 }

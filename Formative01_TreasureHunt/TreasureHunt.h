@@ -5,35 +5,34 @@
 #define WIDTH 5
 #define HEIGHT 5
 
-enum Cell_type
+enum CellType
 {
-	EMPTY,
-	DUG,
-	TREASURE,
-	FOUND
+	Empty,
+	Dug,
+	Treasure,
+	Found
 };
 
-extern std::string chosen_column;
-extern std::string chosen_row;
-extern std::string nb_treasures;
+extern std::string chosenColumn;
+extern std::string chosenRow;
+extern std::string nbTreasures;
 
 extern int cells[WIDTH][HEIGHT];
 
-extern int max_tries;
-extern int nb_treasures_found;
-extern int target_value;
+extern int maxTries;
+extern int nbTreasuresFound;
 extern int tries;
 
 extern bool restart;
 
-int treasure_near(int x, int y);
+int TreasureNear(int x, int y);
 
-bool hit_miss();
-bool play_again();
-bool valid_number();
+bool HitMiss();
+bool PlayAgain();
+bool ValidNumber();
 
-void get_value();
-void place_treasures();
-void draw_playfield();
-void ask_player();
-void reset_game();
+void GetValue();
+void PlaceTreasures();
+void DrawPlayfield();
+void AskPlayer();
+void ResetGame();
